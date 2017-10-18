@@ -101,7 +101,7 @@ public class GeneralFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         // init DatabaseEntertainment
-        DatabaseEntertainment database = new DatabaseEntertainment();
+        DatabaseEntertainment database = new DatabaseEntertainment(getContext());
 
         // set adapter
         adapter = database.loadVideo(getContext(), Constants.GENERAL);

@@ -7,8 +7,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import organization.tho.entertaiment.Model.Video;
@@ -22,13 +25,34 @@ import organization.tho.entertaiment.ViewHolder.VideoViewHolder;
  */
 
 public class DatabaseEntertainment {
-    private FirebaseDatabase database;
-    private com.google.firebase.database.DatabaseReference video;
-    private FirebaseRecyclerAdapter<Video, VideoViewHolder> adapter;
+    private FirebaseDatabase database = null;
+    private com.google.firebase.database.DatabaseReference video = null, connectedRef = null;
+    private FirebaseRecyclerAdapter<Video, VideoViewHolder> adapter = null;
 
-    public DatabaseEntertainment() {
+    public DatabaseEntertainment(final Context context) {
         database = FirebaseDatabase.getInstance();
         video = database.getReference("Video");
+        video.keepSynced(true);
+
+        connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");
+        connectedRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                boolean connected = dataSnapshot.getValue(Boolean.class);
+                if (connected) {
+
+                } else {
+                    if (context != null) {
+                        Toast.makeText(context, "Kết nối Wifi để xem video!", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     /**
