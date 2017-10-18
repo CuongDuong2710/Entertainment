@@ -1,0 +1,4 @@
+1. Removing auth at Firebase
+{
+    "error": "Permission denied"
+}

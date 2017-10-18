@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_general"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="General" />
+        <item
+            android:id="@+id/nav_comic"
+            android:icon="@drawable/ic_child_care_black_24dp"
+            android:title="Comics" />
+        <item
+            android:id="@+id/nav_kids"
+            android:icon="@drawable/ic_child_friendly_black_24dp"
+            android:title="Kids" />
+        <item
+            android:id="@+id/nav_animals"
+            android:icon="@drawable/ic_gesture_black_24dp"
+            android:title="Animals" />
+        <item
+            android:id="@+id/nav_sport"
+            android:icon="@drawable/ic_pool_black_24dp"
+            android:title="Sports" />
+        <item
+            android:id="@+id/nav_music_for_baby"
+            android:icon="@drawable/ic_headset_black_24dp"
+            android:title="Music For Baby" />
+        <item
+            android:id="@+id/nav_kids_songs"
+            android:icon="@drawable/ic_library_music_black_24dp"
+            android:title="Kids Songs" />
+    </group>
+
+</menu>
