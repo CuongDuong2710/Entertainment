@@ -1,7 +1,9 @@
 package organization.tho.entertaiment;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -13,6 +15,8 @@ public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePla
 
     public static final String API_KEY = "AIzaSyDBRvaEaDuSmQHEcQZrHVOOza_qJQic7NI";
 
+    private final String TAG = "PlayVideoActivity";
+
     private String videoId = "";
 
     @Override
@@ -23,6 +27,9 @@ public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePla
         // Initializing YouTube Player View
         YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player);
         youTubePlayerView.initialize(API_KEY, this);
+
+        // get video link from fragment
+        getData();
     }
 
     @Override
@@ -100,4 +107,14 @@ public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePla
 
         }
     };
+
+    /**
+     * Get video link from fragment
+     */
+    private void getData() {
+        Intent intent = getIntent();
+        String videoLink = intent.getStringExtra("videoLink");
+        Log.d(TAG, videoLink.substring(videoLink.lastIndexOf("=") + 1));
+        videoId = videoLink.substring(videoLink.lastIndexOf("=") + 1);
+    }
 }

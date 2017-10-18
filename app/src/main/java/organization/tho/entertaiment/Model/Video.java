@@ -6,7 +6,7 @@ package organization.tho.entertaiment.Model;
  */
 
 public class Video {
-    private String CategoryId, Image, Title, VideoId;
+    private String CategoryId, Image, Title, VideoLink;
 
     public Video() {
     }
@@ -15,7 +15,7 @@ public class Video {
         CategoryId = categoryId;
         Image = image;
         Title = title;
-        VideoId = videoId;
+        VideoLink = videoId;
     }
 
     public String getCategoryId() {
@@ -42,11 +42,11 @@ public class Video {
         Title = title;
     }
 
-    public String getVideoId() {
-        return VideoId;
+    public String getVideoLink() {
+        return VideoLink;
     }
 
-    public void setVideoId(String videoId) {
-        VideoId = videoId;
+    public void setVideoLink(String videoLink) {
+        VideoLink = videoLink;
     }
 }

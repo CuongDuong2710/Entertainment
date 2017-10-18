@@ -1,6 +1,8 @@
 package organization.tho.entertaiment.Common;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
@@ -10,6 +12,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import organization.tho.entertaiment.Model.Video;
+import organization.tho.entertaiment.PlayVideoActivity;
 import organization.tho.entertaiment.R;
 import organization.tho.entertaiment.ViewHolder.VideoViewHolder;
 
@@ -31,7 +34,6 @@ public class DatabaseEntertainment {
     /**
      * Loading video by category
      * @param context
-     * @param layoutId
      * @param category
      */
     public FirebaseRecyclerAdapter loadVideo(final Context context, String category) {
@@ -54,10 +56,23 @@ public class DatabaseEntertainment {
                     public void onClick(View view) {
                         Toast.makeText(context, "" + currentVideo.getTitle(),
                                 Toast.LENGTH_SHORT).show();
+                        // sending data
+                        sendingData(context, currentVideo);
                     }
                 });
             }
         };
         return adapter;
+    }
+
+    /**
+     * Sending data to PlayVideo activity
+     */
+    private void sendingData(Context context, Video video) {
+        if (context != null) {
+            Intent playVideo = new Intent(context, PlayVideoActivity.class);
+            playVideo.putExtra("videoLink", video.getVideoLink());
+            context.startActivity(playVideo);
+        }
     }
 }
