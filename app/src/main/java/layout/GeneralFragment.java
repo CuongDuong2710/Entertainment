@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import organization.tho.entertaiment.Common.Constants;
+import organization.tho.entertaiment.Common.ConvertDpToPx;
 import organization.tho.entertaiment.Common.DatabaseEntertainment;
 import organization.tho.entertaiment.GridSpacingItemDecoration;
 import organization.tho.entertaiment.Model.Video;
@@ -97,7 +98,7 @@ public class GeneralFragment extends Fragment {
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(2), true));
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, ConvertDpToPx.dpToPx(getContext(), 2), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         // init DatabaseEntertainment
