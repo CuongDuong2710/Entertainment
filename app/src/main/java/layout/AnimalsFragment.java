@@ -4,11 +4,24 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import organization.tho.entertaiment.Common.Constants;
+import organization.tho.entertaiment.Common.ConvertDpToPx;
+import organization.tho.entertaiment.Common.DatabaseEntertainment;
+import organization.tho.entertaiment.GridSpacingItemDecoration;
+import organization.tho.entertaiment.Model.Video;
 import organization.tho.entertaiment.R;
+import organization.tho.entertaiment.ViewHolder.VideoViewHolder;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +42,15 @@ public class AnimalsFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    // declare Recycler view
+    RecyclerView recyclerView = null;
+
+    // declare Firebase Database
+    FirebaseDatabase database = null;
+    DatabaseReference video = null;
+
+    FirebaseRecyclerAdapter<Video, VideoViewHolder> adapter = null;
 
     public AnimalsFragment() {
         // Required empty public constructor
@@ -65,7 +87,25 @@ public class AnimalsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_animals, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_animals, container, false);
+
+        recyclerView = rootView.findViewById(R.id.recycler_view_animals);
+
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, ConvertDpToPx.dpToPx(getContext(), 2), true));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        // init DatabaseEntertainment
+        DatabaseEntertainment database = new DatabaseEntertainment(getContext());
+
+        // set adapter
+        adapter = database.loadVideo(getContext(), Constants.ANIMALS);
+
+        // after setting adapter, binding to recycler view
+        recyclerView.setAdapter(adapter);
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
