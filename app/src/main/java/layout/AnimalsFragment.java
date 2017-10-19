@@ -14,6 +14,10 @@ import android.view.ViewGroup;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mancj.materialsearchbar.MaterialSearchBar;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import organization.tho.entertaiment.Common.Constants;
 import organization.tho.entertaiment.Common.ConvertDpToPx;
@@ -47,10 +51,16 @@ public class AnimalsFragment extends Fragment {
     RecyclerView recyclerView = null;
 
     // declare Firebase Database
-    FirebaseDatabase database = null;
-    DatabaseReference video = null;
+    DatabaseReference videoList = null;
 
     FirebaseRecyclerAdapter<Video, VideoViewHolder> adapter = null;
+
+    // declare material search bar
+    MaterialSearchBar materialSearchBar;
+
+    // search functionality
+    FirebaseRecyclerAdapter<Video, VideoViewHolder> searchAdapter = null;
+    List<String> suggestList = new ArrayList<>();
 
     public AnimalsFragment() {
         // Required empty public constructor
@@ -99,8 +109,12 @@ public class AnimalsFragment extends Fragment {
         // init DatabaseEntertainment
         DatabaseEntertainment database = new DatabaseEntertainment(getContext());
 
-        // set adapter
-        adapter = database.loadVideo(getContext(), Constants.ANIMALS);
+        // set adapter & load suggest list
+        if (database != null) {
+            videoList = database.getVideo();
+            adapter = database.loadVideo(getContext(), Constants.ANIMALS);
+            suggestList = database.loadSuggestList(Constants.GENERAL);
+        }
 
         // after setting adapter, binding to recycler view
         recyclerView.setAdapter(adapter);

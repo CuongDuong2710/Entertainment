@@ -132,7 +132,7 @@ public class GeneralFragment extends Fragment {
         }
 
         // load suggest list
-        materialSearchBar.setHint("Enter your videoList");
+        materialSearchBar.setHint("Enter your video");
         materialSearchBar.setLastSuggestions(suggestList);
         materialSearchBar.setCardViewElevation(10);
 
@@ -143,6 +143,35 @@ public class GeneralFragment extends Fragment {
         onSearchActionListener();
 
         return rootView;
+    }
+
+    /**
+     * set text change listener for Search bar
+     */
+    private void addTextChangeListener() {
+        materialSearchBar.addTextChangeListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // When user type their text, we will change suggest list
+                List<String> suggest = new ArrayList<String>();
+                for (String search : suggestList) {
+                    if (search.toLowerCase().contains(materialSearchBar.getText().toLowerCase())) {
+                        suggest.add(search);
+                    }
+                }
+                materialSearchBar.setLastSuggestions(suggest);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     /**
@@ -211,35 +240,6 @@ public class GeneralFragment extends Fragment {
             playVideo.putExtra("videoLink", video.getVideoLink());
             context.startActivity(playVideo);
         }
-    }
-
-    /**
-     * set text change listener for Search bar
-     */
-    private void addTextChangeListener() {
-        materialSearchBar.addTextChangeListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // When user type their text, we will change suggest list
-                List<String> suggest = new ArrayList<String>();
-                for (String search : suggestList) {
-                    if (search.toLowerCase().contains(materialSearchBar.getText().toLowerCase())) {
-                        suggest.add(search);
-                    }
-                }
-                materialSearchBar.setLastSuggestions(suggest);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event
