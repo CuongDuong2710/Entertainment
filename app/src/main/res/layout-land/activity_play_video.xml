@@ -18,9 +18,10 @@
         android:layout_width="60dp"
         android:layout_height="50dp"
         android:src="@drawable/comic"
-        android:layout_alignBottom="@+id/youtube_player"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="45dp" />
+        android:layout_marginRight="45dp"
+        android:layout_marginBottom="30dp"
+        android:layout_above="@+id/adView" />
 
     <!-- TODO: replace adUnitId -->
     <com.google.android.gms.ads.AdView

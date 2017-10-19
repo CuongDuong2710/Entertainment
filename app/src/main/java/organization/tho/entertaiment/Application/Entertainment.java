@@ -1,4 +1,4 @@
-package organization.tho.entertaiment;
+package organization.tho.entertaiment.Application;
 
 import android.app.Application;
 

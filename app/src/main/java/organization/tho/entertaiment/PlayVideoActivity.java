@@ -1,9 +1,12 @@
 package organization.tho.entertaiment;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -20,6 +23,7 @@ import butterknife.ButterKnife;
 public class PlayVideoActivity extends YouTubeBaseActivity
         implements YouTubePlayer.OnInitializedListener {
     @BindView(R.id.adView) AdView mAdView;
+    @BindView(R.id.logo) ImageView mLogo;
 
     public static final String API_KEY = "AIzaSyDBRvaEaDuSmQHEcQZrHVOOza_qJQic7NI";
 
@@ -49,6 +53,13 @@ public class PlayVideoActivity extends YouTubeBaseActivity
         AdRequest adRequest = new AdRequest.Builder()
                         .addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
         mAdView.loadAd(adRequest);
+
+        mLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(PlayVideoActivity.this, "Top Funny Video", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
