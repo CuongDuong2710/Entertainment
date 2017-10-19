@@ -14,6 +14,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import organization.tho.entertaiment.Model.Video;
 import organization.tho.entertaiment.PlayVideoActivity;
 import organization.tho.entertaiment.R;
@@ -28,6 +31,9 @@ public class DatabaseEntertainment {
     private FirebaseDatabase database = null;
     private com.google.firebase.database.DatabaseReference video = null, connectedRef = null;
     private FirebaseRecyclerAdapter<Video, VideoViewHolder> adapter = null;
+
+    // suggest list when searching
+    private List<String> suggestList = new ArrayList();
 
     public DatabaseEntertainment(final Context context) {
         database = FirebaseDatabase.getInstance();
@@ -90,6 +96,31 @@ public class DatabaseEntertainment {
     }
 
     /**
+     * Loading suggest list when searching by category
+     */
+    public List<String> loadSuggestList(String category) {
+        if (video != null) {
+            video.orderByChild("CategoryId").equalTo(category)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // get videoList item
+                        for(DataSnapshot itemSpapshot : dataSnapshot.getChildren()) {
+                            Video video = itemSpapshot.getValue(Video.class);
+                            suggestList.add(video.getTitle());
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+        }
+        return suggestList;
+    }
+
+    /**
      * Sending data to PlayVideo activity
      */
     private void sendingData(Context context, Video video) {
@@ -98,5 +129,9 @@ public class DatabaseEntertainment {
             playVideo.putExtra("videoLink", video.getVideoLink());
             context.startActivity(playVideo);
         }
+    }
+
+    public DatabaseReference getVideo() {
+        return video;
     }
 }
