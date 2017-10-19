@@ -17,7 +17,11 @@ import android.widget.Toast;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import organization.tho.entertaiment.Common.Constants;
 import organization.tho.entertaiment.Common.ConvertDpToPx;
@@ -56,6 +60,13 @@ public class GeneralFragment extends Fragment {
     DatabaseReference video = null;
 
     FirebaseRecyclerAdapter<Video, VideoViewHolder> adapter = null;
+
+    // declare material search bar
+    MaterialSearchBar materialSearchBar;
+
+    // search functionality
+    FirebaseRecyclerAdapter<Video, VideoViewHolder> searchAdapter = null;
+    List<String> suggestList = new ArrayList<>();
 
     public GeneralFragment() {
         // Required empty public constructor

@@ -131,9 +131,9 @@ public class PlayVideoActivity extends YouTubeBaseActivity
      * Get video link from fragment
      */
     private void getData() {
-        Intent intent = getIntent();
-        String videoLink = intent.getStringExtra("videoLink");
-        Log.d(TAG, videoLink.substring(videoLink.lastIndexOf("=") + 1));
-        videoId = videoLink.substring(videoLink.lastIndexOf("=") + 1);
+        if (getIntent() != null) {
+            String videoLink = getIntent().getStringExtra("videoLink");
+            videoId = videoLink.substring(videoLink.lastIndexOf("=") + 1);
+        }
     }
 }
