@@ -31,7 +31,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/thumbnail"
                 android:padding="5dp"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:lines="2"/>
 
         </RelativeLayout>
 
