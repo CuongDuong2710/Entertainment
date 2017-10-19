@@ -6,12 +6,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class PlayVideoActivity extends YouTubeBaseActivity
+        implements YouTubePlayer.OnInitializedListener {
+    @BindView(R.id.adView) AdView mAdView;
 
     public static final String API_KEY = "AIzaSyDBRvaEaDuSmQHEcQZrHVOOza_qJQic7NI";
 
@@ -23,6 +31,7 @@ public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePla
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_video);
+        ButterKnife.bind(this);
 
         // Initializing YouTube Player View
         YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player);
@@ -30,6 +39,16 @@ public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePla
 
         // get video link from fragment
         getData();
+
+        // init ads
+        // TODO: replace app unit id
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
+
+        // loading ads
+        // TODO: remove addTestDevice when publish app
+        AdRequest adRequest = new AdRequest.Builder()
+                        .addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        mAdView.loadAd(adRequest);
     }
 
     @Override
