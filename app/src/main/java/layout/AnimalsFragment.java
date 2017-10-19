@@ -1,20 +1,25 @@
 package layout;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.mancj.materialsearchbar.MaterialSearchBar;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +29,7 @@ import organization.tho.entertaiment.Common.ConvertDpToPx;
 import organization.tho.entertaiment.Common.DatabaseEntertainment;
 import organization.tho.entertaiment.GridSpacingItemDecoration;
 import organization.tho.entertaiment.Model.Video;
+import organization.tho.entertaiment.PlayVideoActivity;
 import organization.tho.entertaiment.R;
 import organization.tho.entertaiment.ViewHolder.VideoViewHolder;
 
@@ -100,6 +106,7 @@ public class AnimalsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_animals, container, false);
 
         recyclerView = rootView.findViewById(R.id.recycler_view_animals);
+        materialSearchBar = rootView.findViewById(R.id.search_bar_animals);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -113,13 +120,123 @@ public class AnimalsFragment extends Fragment {
         if (database != null) {
             videoList = database.getVideo();
             adapter = database.loadVideo(getContext(), Constants.ANIMALS);
-            suggestList = database.loadSuggestList(Constants.GENERAL);
+            suggestList = database.loadSuggestList(Constants.ANIMALS);
         }
 
         // after setting adapter, binding to recycler view
-        recyclerView.setAdapter(adapter);
+        if (adapter != null) {
+            recyclerView.setAdapter(adapter);
+        }
+
+        // load suggest list
+        materialSearchBar.setHint("Enter your video");
+        materialSearchBar.setLastSuggestions(suggestList);
+        materialSearchBar.setCardViewElevation(10);
+
+        // add text change listener
+        addTextChangeListener();
+
+        // set search on listener
+        onSearchActionListener();
 
         return rootView;
+    }
+
+    /**
+     * set text change listener for Search bar
+     */
+    private void addTextChangeListener() {
+        materialSearchBar.addTextChangeListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // When user type their text, we will change suggest list
+                List<String> suggest = new ArrayList<String>();
+                for (String search : suggestList) {
+                    if (search.toLowerCase().contains(materialSearchBar.getText().toLowerCase())) {
+                        suggest.add(search);
+                    }
+                }
+                materialSearchBar.setLastSuggestions(suggest);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+    }
+
+    /**
+     * set on search action listener
+     */
+    private void onSearchActionListener() {
+        materialSearchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
+            @Override
+            public void onSearchStateChanged(boolean enabled) {
+                // When Search bar is close
+                // Restore original adapter
+                if (!enabled) {
+                    recyclerView.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onSearchConfirmed(CharSequence text) {
+                // When Search finished
+                // Show result of search adapter
+                startSearch(text);
+            }
+
+            @Override
+            public void onButtonClicked(int buttonCode) {
+
+            }
+        });
+    }
+
+    /**
+     * Searching videoList by text
+     * @param text
+     */
+    private void startSearch(CharSequence text) {
+        searchAdapter = new FirebaseRecyclerAdapter<Video, VideoViewHolder>(
+                Video.class,
+                R.layout.category_card,
+                VideoViewHolder.class,
+                videoList.orderByChild("Title").equalTo(text.toString())) { // Compare video title
+            @Override
+            protected void populateViewHolder(VideoViewHolder viewHolder, final Video model, int position) {
+                // set title video
+                viewHolder.txtTitle.setText(model.getTitle());
+                // set video image
+                Picasso.with(getContext()).load(model.getImage())
+                        .into(viewHolder.imgVideo);
+                viewHolder.imgVideo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getContext(), "" + model.getTitle(), Toast.LENGTH_SHORT).show();
+                        sendingData(getContext(), model);
+                    }
+                });
+            }
+        };
+        recyclerView.setAdapter(searchAdapter);
+    }
+
+    /**
+     * Sending data to PlayVideo activity
+     */
+    private void sendingData(Context context, Video video) {
+        if (context != null) {
+            Intent playVideo = new Intent(context, PlayVideoActivity.class);
+            playVideo.putExtra("videoLink", video.getVideoLink());
+            context.startActivity(playVideo);
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
