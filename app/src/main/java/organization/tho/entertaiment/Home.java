@@ -2,11 +2,8 @@ package organization.tho.entertaiment;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -20,7 +17,6 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
 import layout.AnimalsFragment;
-import layout.ComicFragment;
 import layout.GeneralFragment;
 import layout.KidsFragment;
 import layout.KidsSongFragment;
@@ -30,7 +26,6 @@ import layout.SportFragment;
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
                 SportFragment.OnFragmentInteractionListener,
-                ComicFragment.OnFragmentInteractionListener,
                 GeneralFragment.OnFragmentInteractionListener,
                 MusicForKidsFragment.OnFragmentInteractionListener,
                 AnimalsFragment.OnFragmentInteractionListener,
@@ -106,10 +101,6 @@ public class Home extends AppCompatActivity
             case R.id.nav_general:
                 fragment = GeneralFragment.newInstance("test1", "test2");
                 toolbar.setTitle("General");
-                break;
-            case R.id.nav_comic:
-                fragment = ComicFragment.newInstance("test1", "test2");
-                toolbar.setTitle("Comic");
                 break;
             case R.id.nav_kids:
                 fragment = KidsFragment.newInstance("test1", "test2");

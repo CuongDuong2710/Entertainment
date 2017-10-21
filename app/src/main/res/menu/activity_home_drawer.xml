@@ -7,10 +7,6 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="General" />
         <item
-            android:id="@+id/nav_comic"
-            android:icon="@drawable/ic_child_care_black_24dp"
-            android:title="Comics" />
-        <item
             android:id="@+id/nav_kids"
             android:icon="@drawable/ic_child_friendly_black_24dp"
             android:title="Kids" />
