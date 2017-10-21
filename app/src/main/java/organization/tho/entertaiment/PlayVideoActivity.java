@@ -23,7 +23,6 @@ import butterknife.ButterKnife;
 public class PlayVideoActivity extends YouTubeBaseActivity
         implements YouTubePlayer.OnInitializedListener {
     @BindView(R.id.adView) AdView mAdView;
-    @BindView(R.id.logo) ImageView mLogo;
 
     public static final String API_KEY = "AIzaSyDBRvaEaDuSmQHEcQZrHVOOza_qJQic7NI";
 
@@ -54,12 +53,6 @@ public class PlayVideoActivity extends YouTubeBaseActivity
                         .addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
         mAdView.loadAd(adRequest);
 
-        mLogo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(PlayVideoActivity.this, "Top Funny Video", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     @Override
@@ -70,7 +63,7 @@ public class PlayVideoActivity extends YouTubeBaseActivity
 
         // start buffering
         if (!wasRestored) {
-            youTubePlayer.cueVideo(videoId);
+            youTubePlayer.loadVideo(videoId, 0);
         }
     }
 
