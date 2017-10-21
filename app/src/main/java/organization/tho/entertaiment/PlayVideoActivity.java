@@ -1,12 +1,6 @@
 package organization.tho.entertaiment;
 
-import android.content.Intent;
-import android.media.Image;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -22,11 +16,10 @@ import butterknife.ButterKnife;
 
 public class PlayVideoActivity extends YouTubeBaseActivity
         implements YouTubePlayer.OnInitializedListener {
-    @BindView(R.id.adView) AdView mAdView;
+    @BindView(R.id.adView1) AdView mAdView1;
+    @BindView(R.id.adView2) AdView mAdView2;
 
     public static final String API_KEY = "AIzaSyDBRvaEaDuSmQHEcQZrHVOOza_qJQic7NI";
-
-    private final String TAG = "PlayVideoActivity";
 
     private String videoId = "";
 
@@ -51,7 +44,8 @@ public class PlayVideoActivity extends YouTubeBaseActivity
         // TODO: remove addTestDevice when publish app
         AdRequest adRequest = new AdRequest.Builder()
                         .addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
-        mAdView.loadAd(adRequest);
+        mAdView1.loadAd(adRequest);
+        mAdView2.loadAd(adRequest);
 
     }
 
