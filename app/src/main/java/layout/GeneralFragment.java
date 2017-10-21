@@ -56,6 +56,9 @@ public class GeneralFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    // constant video GENERAL is true
+    private static final String GENERAL = "true";
+
     // declare Recycler view
     RecyclerView recyclerView = null;
 
@@ -119,11 +122,14 @@ public class GeneralFragment extends Fragment {
         // init DatabaseEntertainment
         DatabaseEntertainment database = new DatabaseEntertainment(getContext());
 
-        // set adapter & load suggest list
+        // load video general & suggest list
         if (database != null) {
+            // get video database reference
             videoList = database.getVideo();
-            adapter = database.loadVideo(getContext(), Constants.GENERAL);
-            suggestList = database.loadSuggestList(Constants.GENERAL);
+            // load video general
+            loadVideoGeneral();
+            // load suggest list
+            loadSuggestList();
         }
 
         // after setting adapter, binding to recycler view
@@ -131,7 +137,7 @@ public class GeneralFragment extends Fragment {
             recyclerView.setAdapter(adapter);
         }
 
-        // load suggest list
+        // set suggest list to search bar
         materialSearchBar.setHint("Enter your video");
         materialSearchBar.setLastSuggestions(suggestList);
         materialSearchBar.setCardViewElevation(10);
@@ -143,6 +149,62 @@ public class GeneralFragment extends Fragment {
         onSearchActionListener();
 
         return rootView;
+    }
+
+    /**
+     * Loading suggest list
+     */
+    private void loadSuggestList() {
+        if (videoList != null) {
+            videoList.orderByChild("IsGeneral").equalTo(GENERAL)
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            // get videoList item
+                            for(DataSnapshot itemSpapshot : dataSnapshot.getChildren()) {
+                                Video video = itemSpapshot.getValue(Video.class);
+                                suggestList.add(video.getTitle());
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+        }
+    }
+
+    /**
+     * Loading video is general
+     */
+    private void loadVideoGeneral() {
+        adapter = new FirebaseRecyclerAdapter<Video, VideoViewHolder>(Video.class,
+                R.layout.category_card,
+                VideoViewHolder.class,
+                videoList.orderByChild("IsGeneral").equalTo(GENERAL)) {
+            @Override
+            protected void populateViewHolder(VideoViewHolder viewHolder, Video model, int position) {
+                // set video title
+                viewHolder.txtTitle.setText(model.getTitle());
+                // set image
+                Picasso.with(getContext()).load(model.getImage())
+                        .into(viewHolder.imgVideo);
+                // get current video
+                final Video currentVideo = model;
+                // set onClickListener
+                viewHolder.imgVideo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getContext(), "" + currentVideo.getTitle(),
+                                Toast.LENGTH_SHORT).show();
+                        // sending data
+                        sendingData(getContext(), currentVideo);
+                    }
+                });
+            }
+        };
+        recyclerView.setAdapter(adapter);
     }
 
     /**
@@ -158,7 +220,7 @@ public class GeneralFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 // When user type their text, we will change suggest list
-                List<String> suggest = new ArrayList<String>();
+                List<String> suggest = new ArrayList<>();
                 for (String search : suggestList) {
                     if (search.toLowerCase().contains(materialSearchBar.getText().toLowerCase())) {
                         suggest.add(search);
