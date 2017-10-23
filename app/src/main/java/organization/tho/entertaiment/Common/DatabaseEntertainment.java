@@ -70,7 +70,7 @@ public class DatabaseEntertainment {
         adapter = new FirebaseRecyclerAdapter<Video, VideoViewHolder>(Video.class,
                 R.layout.category_card,
                 VideoViewHolder.class,
-                video.orderByChild("CategoryId").equalTo(category)) {
+                video.orderByChild("categoryId").equalTo(category)) {
             @Override
             protected void populateViewHolder(VideoViewHolder viewHolder, Video model, int position) {
                 // set video title

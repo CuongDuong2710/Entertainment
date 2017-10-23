@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TopFunnyVideo</string>
+    <string name="app_name">TopFunVideo</string>
     <string name="title_activity_home">Comic</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

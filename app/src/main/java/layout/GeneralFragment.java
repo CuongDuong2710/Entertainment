@@ -26,7 +26,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import organization.tho.entertaiment.Common.Constants;
 import organization.tho.entertaiment.Common.ConvertDpToPx;
 import organization.tho.entertaiment.Common.DatabaseEntertainment;
 import organization.tho.entertaiment.GridSpacingItemDecoration;
@@ -56,8 +55,8 @@ public class GeneralFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    // constant video GENERAL is true
-    private static final String GENERAL = "true";
+    // constant video IS_GENERAL is true
+    private static final boolean IS_GENERAL = true;
 
     // declare Recycler view
     RecyclerView recyclerView = null;
@@ -156,7 +155,7 @@ public class GeneralFragment extends Fragment {
      */
     private void loadSuggestList() {
         if (videoList != null) {
-            videoList.orderByChild("IsGeneral").equalTo(GENERAL)
+            videoList.orderByChild("isGeneral").equalTo(IS_GENERAL)
                     .addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -182,7 +181,7 @@ public class GeneralFragment extends Fragment {
         adapter = new FirebaseRecyclerAdapter<Video, VideoViewHolder>(Video.class,
                 R.layout.category_card,
                 VideoViewHolder.class,
-                videoList.orderByChild("IsGeneral").equalTo(GENERAL)) {
+                videoList.orderByChild("isGeneral").equalTo(IS_GENERAL)) {
             @Override
             protected void populateViewHolder(VideoViewHolder viewHolder, Video model, int position) {
                 // set video title
