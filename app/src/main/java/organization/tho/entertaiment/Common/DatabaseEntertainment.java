@@ -100,7 +100,7 @@ public class DatabaseEntertainment {
      */
     public List<String> loadSuggestList(String category) {
         if (video != null) {
-            video.orderByChild("CategoryId").equalTo(category)
+            video.orderByChild("categoryId").equalTo(category)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

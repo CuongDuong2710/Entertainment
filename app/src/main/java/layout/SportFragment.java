@@ -208,7 +208,7 @@ public class SportFragment extends Fragment {
                 Video.class,
                 R.layout.category_card,
                 VideoViewHolder.class,
-                videoList.orderByChild("Title").equalTo(text.toString())) { // Compare video title
+                videoList.orderByChild("title").equalTo(text.toString())) { // Compare video title
             @Override
             protected void populateViewHolder(VideoViewHolder viewHolder, final Video model, int position) {
                 // set title video
