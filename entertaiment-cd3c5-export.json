@@ -1,0 +1,94 @@
+{
+  "Category" : {
+    "01" : {
+      "name" : "General"
+    },
+    "02" : {
+      "name" : "Kids"
+    },
+    "03" : {
+      "name" : "Animals"
+    },
+    "04" : {
+      "name" : "Sports"
+    },
+    "05" : {
+      "name" : "MusicForBaby"
+    },
+    "06" : {
+      "name" : "KidSongs"
+    }
+  },
+  "Video" : {
+    "01" : {
+      "categoryId" : "04",
+      "image" : "https://firebasestorage.googleapis.com/v0/b/entertaiment-cd3c5.appspot.com/o/top25_assist.jpg?alt=media&token=68a3b6c4-9bcd-4b6d-b29b-b6d01cd9961a",
+      "isGeneral" : false,
+      "title" : "Top 25 INCREDIBLE Assists in Football | HD",
+      "videoLink" : "https://www.youtube.com/watch?v=f7qlgyQGUZY"
+    },
+    "02" : {
+      "categoryId" : "04",
+      "image" : "https://goo.gl/LpGnVz",
+      "isGeneral" : true,
+      "title" : "15 Most Creative Penalty Goals in Football",
+      "videoLink" : "https://www.youtube.com/watch?v=ldnJrDOgwpo"
+    },
+    "03" : {
+      "categoryId" : "04",
+      "image" : "https://firebasestorage.googleapis.com/v0/b/entertaiment-cd3c5.appspot.com/o/top30_goals.jpg?alt=media&token=cd55fd5c-6415-4f1b-aa5b-17d13949b776",
+      "isGeneral" : false,
+      "title" : "30 Rare Goals We See in Football",
+      "videoLink" : "https://www.youtube.com/watch?v=56MDJ9tD6MY"
+    },
+    "04" : {
+      "categoryId" : "02",
+      "image" : "https://goo.gl/RZUxX6",
+      "isGeneral" : true,
+      "title" : "Funny Jessi Smiles ",
+      "videoLink" : "https://www.youtube.com/watch?v=ujpH98SPpwU"
+    },
+    "05" : {
+      "categoryId" : "02",
+      "image" : "https://firebasestorage.googleapis.com/v0/b/entertaiment-cd3c5.appspot.com/o/baby_learning_songs.jpg?alt=media&token=eee07d20-ebd1-4edd-a0b5-f1c21bc51f29",
+      "isGeneral" : true,
+      "title" : " Baby Learning Songs",
+      "videoLink" : "https://www.youtube.com/watch?v=vJUVMk6uxLc"
+    },
+    "06" : {
+      "categoryId" : "02",
+      "image" : "https://firebasestorage.googleapis.com/v0/b/entertaiment-cd3c5.appspot.com/o/try_to_not_laugh.jpg?alt=media&token=3a9fe219-7dd2-4ee7-b57c-ee13f9b16bab",
+      "isGeneral" : true,
+      "title" : "Try to not laugh",
+      "videoLink" : "https://www.youtube.com/watch?v=-TjtoP6-mcQ"
+    },
+    "07" : {
+      "categoryId" : "02",
+      "image" : "https://firebasestorage.googleapis.com/v0/b/entertaiment-cd3c5.appspot.com/o/get_ready_to_laugh.jpg?alt=media&token=351f8506-4ebf-423e-bae0-88b4bd90ac85",
+      "isGeneral" : true,
+      "title" : "Get Ready To Laugh",
+      "videoLink" : "https://www.youtube.com/watch?v=MUMdOQ1FBGs"
+    },
+    "08" : {
+      "categoryId" : "02",
+      "image" : "https://firebasestorage.googleapis.com/v0/b/entertaiment-cd3c5.appspot.com/o/funny_kids_fail_army.jpg?alt=media&token=fca3e166-4a92-4a95-87bc-38a8b577fa9a",
+      "isGeneral" : true,
+      "title" : "Funny Kid Fails",
+      "videoLink" : "https://www.youtube.com/watch?v=T4a_c1gtYb4"
+    },
+    "09" : {
+      "categoryId" : "03",
+      "image" : "https://firebasestorage.googleapis.com/v0/b/entertaiment-cd3c5.appspot.com/o/animals_so_funny.jpg?alt=media&token=40b80ef2-2806-4732-9d6e-fbc28bc9c499",
+      "isGeneral" : true,
+      "title" : "SO FUNNY that you will CRY FROM LAUGHING",
+      "videoLink" : "https://www.youtube.com/watch?v=H_NL-djQnCU"
+    },
+    "10" : {
+      "categoryId" : "03",
+      "image" : "https://firebasestorage.googleapis.com/v0/b/entertaiment-cd3c5.appspot.com/o/animals_your_daily.jpg?alt=media&token=8fd3d41e-a5b0-4789-90a9-77c3bef4cd6b",
+      "isGeneral" : true,
+      "title" : "Your DAILY DOSE OF LAUGHTER",
+      "videoLink" : "https://www.youtube.com/watch?v=4JXAwhr-ShE"
+    }
+  }
+}
