@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import info.hoang8f.widget.FButton;
 import organization.tho.entertaiment.R;
 
 /**
@@ -14,11 +15,13 @@ import organization.tho.entertaiment.R;
 public class VideoViewHolder extends RecyclerView.ViewHolder {
     public TextView txtTitle;
     public ImageView imgVideo;
+    public FButton btnView;
 
     public VideoViewHolder(View itemView) {
         super(itemView);
 
         txtTitle = itemView.findViewById(R.id.title);
         imgVideo = itemView.findViewById(R.id.thumbnail);
+        btnView = itemView.findViewById(R.id.btn_view);
     }
 }

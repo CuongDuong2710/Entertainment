@@ -34,6 +34,18 @@
                 android:textSize="15dp"
                 android:lines="2"/>
 
+            <info.hoang8f.widget.FButton
+                android:id="@+id/btn_view"
+                android:layout_below="@id/title"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                android:text="View"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"
+                app:buttonColor="@color/btnView"/>
+
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>

@@ -80,12 +80,10 @@ public class DatabaseEntertainment {
                 // get current video
                 final Video currentVideo = model;
                 // set onClickListener
-                viewHolder.imgVideo.setOnClickListener(new View.OnClickListener() {
+                viewHolder.btnView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(context, "" + currentVideo.getTitle(),
-                                Toast.LENGTH_SHORT).show();
-                        // sending data
+                        Toast.makeText(context, "" + currentVideo.getTitle(), Toast.LENGTH_SHORT).show();
                         sendingData(context, currentVideo);
                     }
                 });

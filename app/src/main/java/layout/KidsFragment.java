@@ -215,7 +215,7 @@ public class KidsFragment extends Fragment {
                 // set video image
                 Picasso.with(getContext()).load(model.getImage())
                         .into(viewHolder.imgVideo);
-                viewHolder.imgVideo.setOnClickListener(new View.OnClickListener() {
+                viewHolder.btnView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Toast.makeText(getContext(), "" + model.getTitle(), Toast.LENGTH_SHORT).show();

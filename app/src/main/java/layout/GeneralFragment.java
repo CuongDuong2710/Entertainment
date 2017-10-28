@@ -192,12 +192,10 @@ public class GeneralFragment extends Fragment {
                 // get current video
                 final Video currentVideo = model;
                 // set onClickListener
-                viewHolder.imgVideo.setOnClickListener(new View.OnClickListener() {
+                viewHolder.btnView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getContext(), "" + currentVideo.getTitle(),
-                                Toast.LENGTH_SHORT).show();
-                        // sending data
+                        Toast.makeText(getContext(), "" + currentVideo.getTitle(), Toast.LENGTH_SHORT).show();
                         sendingData(getContext(), currentVideo);
                     }
                 });
@@ -280,7 +278,7 @@ public class GeneralFragment extends Fragment {
                 // set video image
                 Picasso.with(getContext()).load(model.getImage())
                         .into(viewHolder.imgVideo);
-                viewHolder.imgVideo.setOnClickListener(new View.OnClickListener() {
+                viewHolder.btnView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Toast.makeText(getContext(), "" + model.getTitle(), Toast.LENGTH_SHORT).show();
