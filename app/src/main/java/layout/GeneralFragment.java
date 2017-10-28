@@ -298,7 +298,7 @@ public class GeneralFragment extends Fragment {
     private void sendingData(Context context, Video video) {
         if (context != null) {
             Intent playVideo = new Intent(context, PlayVideoActivity.class);
-            playVideo.putExtra("videoLink", video.getVideoLink());
+            playVideo.putExtra("videoId", video.getVideoId());
             context.startActivity(playVideo);
         }
     }

@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.squareup.picasso.Picasso;
 
@@ -234,7 +233,7 @@ public class AnimalsFragment extends Fragment {
     private void sendingData(Context context, Video video) {
         if (context != null) {
             Intent playVideo = new Intent(context, PlayVideoActivity.class);
-            playVideo.putExtra("videoLink", video.getVideoLink());
+            playVideo.putExtra("videoId", video.getVideoId());
             context.startActivity(playVideo);
         }
     }

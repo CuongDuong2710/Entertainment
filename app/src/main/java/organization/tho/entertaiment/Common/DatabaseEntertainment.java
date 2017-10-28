@@ -2,7 +2,6 @@ package organization.tho.entertaiment.Common;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
@@ -126,7 +125,7 @@ public class DatabaseEntertainment {
     private void sendingData(Context context, Video video) {
         if (context != null) {
             Intent playVideo = new Intent(context, PlayVideoActivity.class);
-            playVideo.putExtra("videoLink", video.getVideoLink());
+            playVideo.putExtra("videoId", video.getVideoId());
             context.startActivity(playVideo);
         }
     }

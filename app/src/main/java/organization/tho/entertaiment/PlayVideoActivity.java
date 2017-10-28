@@ -56,7 +56,7 @@ public class PlayVideoActivity extends YouTubeBaseActivity
         youTubePlayer.setPlaybackEventListener(playbackEventListener);
 
         // start buffering
-        if (!wasRestored) {
+        if (!wasRestored && videoId != null) {
             youTubePlayer.loadVideo(videoId, 0);
         }
     }
@@ -130,8 +130,7 @@ public class PlayVideoActivity extends YouTubeBaseActivity
      */
     private void getData() {
         if (getIntent() != null) {
-            String videoLink = getIntent().getStringExtra("videoLink");
-            videoId = videoLink.substring(videoLink.lastIndexOf("=") + 1);
+            videoId = getIntent().getStringExtra("videoId");
         }
     }
 }
