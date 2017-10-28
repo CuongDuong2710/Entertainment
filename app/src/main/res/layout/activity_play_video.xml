@@ -19,13 +19,24 @@
         ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
     </com.google.android.gms.ads.AdView>
 
-    <com.google.android.youtube.player.YouTubePlayerView
-        android:id="@+id/youtube_player"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_width="match_parent"
-        android:layout_height="450dp">
+        android:background="@color/btnView">
 
-    </com.google.android.youtube.player.YouTubePlayerView>
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/youtube_player"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp">
+        </com.google.android.youtube.player.YouTubePlayerView>
+
+    </RelativeLayout>
 
     <!-- TODO: replace adUnitId -->
     <com.google.android.gms.ads.AdView
