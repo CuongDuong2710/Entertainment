@@ -1,10 +1,10 @@
-var channelName = 'DJASSKICKER';
+var channelID = 'UC8pr9FmQ3A_dW99jqWEsveg';
 
 $(document).ready(function(){
 	$.get(
 		"https://www.googleapis.com/youtube/v3/channels", {
 			part: 'contentDetails',
-			forUsername: channelName,
+			id: channelID,
 			key: 'AIzaSyDlMX3v-eiC_SLkwuOrpvL19lRpTZbW4fI'},
 			function(data){
 				$.each(data.items, function(i, item){

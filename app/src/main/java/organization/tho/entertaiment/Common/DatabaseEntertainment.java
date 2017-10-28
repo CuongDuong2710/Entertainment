@@ -37,7 +37,7 @@ public class DatabaseEntertainment {
 
     public DatabaseEntertainment(final Context context) {
         database = FirebaseDatabase.getInstance();
-        video = database.getReference("Video");
+        video = database.getReference("video");
         video.keepSynced(true);
 
         connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");

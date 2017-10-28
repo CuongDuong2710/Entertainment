@@ -8,14 +8,14 @@ package organization.tho.entertaiment.Common;
 public class Constants {
     // General
     public static final String GENERAL = "01";
-    // Kids
-    public static final String KIDS = "02";
+    // Kids - Comedy
+    public static final String KIDS = "23";
     // Animals
-    public static final String ANIMALS = "03";
+    public static final String ANIMALS = "15";
     // Sports
-    public static final String SPORTS = "04";
-    // Music For Baby
-    public static final String MUSIC_FOR_BABY = "05";
-    // Kid songs
-    public static final String KID_SONGS = "06";
+    public static final String SPORTS = "17";
+    // Music For Baby - Music
+    public static final String MUSIC_FOR_BABY = "10";
+    // Kid songs - Education
+    public static final String KID_SONGS = "27";
 }

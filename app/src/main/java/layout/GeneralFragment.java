@@ -56,7 +56,7 @@ public class GeneralFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     // constant video IS_GENERAL is true
-    private static final boolean IS_GENERAL = true;
+    private static final String IS_GENERAL = "true";
 
     // declare Recycler view
     RecyclerView recyclerView = null;
