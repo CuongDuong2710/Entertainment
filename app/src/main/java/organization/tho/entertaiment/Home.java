@@ -104,15 +104,15 @@ public class Home extends AppCompatActivity
                 break;
             case R.id.nav_kids:
                 fragment = KidsFragment.newInstance("test1", "test2");
-                toolbar.setTitle("Kids");
+                toolbar.setTitle("Funny Kids");
                 break;
             case R.id.nav_animals:
                 fragment = AnimalsFragment.newInstance("test1", "test2");
-                toolbar.setTitle("Animals");
+                toolbar.setTitle("Funny Animals");
                 break;
             case R.id.nav_sport:
                 fragment = SportFragment.newInstance("test1", "test2");
-                toolbar.setTitle("Sport");
+                toolbar.setTitle("Funny Sport");
                 break;
             case R.id.nav_music_for_baby:
                 fragment = MusicForKidsFragment.newInstance("test1", "test2");
