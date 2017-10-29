@@ -9,15 +9,15 @@
         <item
             android:id="@+id/nav_kids"
             android:icon="@drawable/ic_child_friendly_black_24dp"
-            android:title="Kids" />
+            android:title="Funny Kids" />
         <item
             android:id="@+id/nav_animals"
             android:icon="@drawable/ic_gesture_black_24dp"
-            android:title="Animals" />
+            android:title="Funny Animals" />
         <item
             android:id="@+id/nav_sport"
             android:icon="@drawable/ic_pool_black_24dp"
-            android:title="Sports" />
+            android:title="Funny Sports" />
         <item
             android:id="@+id/nav_music_for_baby"
             android:icon="@drawable/ic_headset_black_24dp"
