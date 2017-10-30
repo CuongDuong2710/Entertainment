@@ -2,6 +2,7 @@ package organization.tho.entertaiment.Common;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -124,6 +125,7 @@ public class DatabaseEntertainment {
         if (context != null) {
             Intent playVideo = new Intent(context, PlayVideoActivity.class);
             playVideo.putExtra("videoId", video.getVideoId());
+            playVideo.putExtra("videoTitle", video.getTitle());
             context.startActivity(playVideo);
         }
     }

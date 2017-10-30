@@ -10,6 +10,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -297,6 +298,8 @@ public class GeneralFragment extends Fragment {
         if (context != null) {
             Intent playVideo = new Intent(context, PlayVideoActivity.class);
             playVideo.putExtra("videoId", video.getVideoId());
+            playVideo.putExtra("videoTitle", video.getTitle());
+            Log.d("Cuong", "General - videoTitle: " + video.getTitle());
             context.startActivity(playVideo);
         }
     }

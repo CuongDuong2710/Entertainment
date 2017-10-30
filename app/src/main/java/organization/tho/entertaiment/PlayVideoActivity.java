@@ -3,6 +3,7 @@ package organization.tho.entertaiment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -26,7 +27,7 @@ public class PlayVideoActivity extends AppCompatActivity
 
     public static final String API_KEY = "AIzaSyDBRvaEaDuSmQHEcQZrHVOOza_qJQic7NI";
 
-    private String videoId = "";
+    private String videoId = "", videoTitle = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class PlayVideoActivity extends AppCompatActivity
         setSupportActionBar(mToolbar);
 
         if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(videoTitle);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
@@ -151,6 +153,7 @@ public class PlayVideoActivity extends AppCompatActivity
     private void getData() {
         if (getIntent() != null) {
             videoId = getIntent().getStringExtra("videoId");
+            videoTitle = getIntent().getStringExtra("videoTitle");
         }
     }
 }
