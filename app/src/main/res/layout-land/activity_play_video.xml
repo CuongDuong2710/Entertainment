@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context="organization.tho.entertaiment.PlayVideoActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/btnView"
+        android:theme="@style/toolbar_theme"
+        app:titleTextColor="@android:color/white">
+
+    </android.support.v7.widget.Toolbar>
+
     <!-- TODO: replace adUnitId -->
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -29,12 +40,12 @@
         ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
     </com.google.android.gms.ads.AdView>
 
-    <com.google.android.youtube.player.YouTubePlayerView
+    <fragment
+        android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
         android:id="@+id/youtube_player"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-    </com.google.android.youtube.player.YouTubePlayerView>
+    </fragment>
 
 
 
