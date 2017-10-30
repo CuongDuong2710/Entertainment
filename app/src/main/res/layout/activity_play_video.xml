@@ -45,7 +45,7 @@
             android:layout_marginBottom="15dp"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:background="@color/btnView">
+            android:background="@drawable/layout_background">
 
             <fragment
                 android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
