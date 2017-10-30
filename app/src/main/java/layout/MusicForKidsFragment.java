@@ -60,13 +60,6 @@ public class MusicForKidsFragment extends Fragment {
 
     FirebaseRecyclerAdapter<Video, VideoViewHolder> adapter = null;
 
-    // declare material search bar
-    MaterialSearchBar materialSearchBar;
-
-    // search functionality
-    FirebaseRecyclerAdapter<Video, VideoViewHolder> searchAdapter = null;
-    List<String> suggestList = new ArrayList<>();
-
     public MusicForKidsFragment() {
         // Required empty public constructor
     }
@@ -105,7 +98,6 @@ public class MusicForKidsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_music_for_kids, container, false);
 
         recyclerView = rootView.findViewById(R.id.recycler_view_music_for_kids);
-        materialSearchBar = rootView.findViewById(R.id.search_bar_music_for_kids);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -119,7 +111,6 @@ public class MusicForKidsFragment extends Fragment {
         if (database != null) {
             videoList = database.getVideo();
             adapter = database.loadVideo(getContext(), Constants.MUSIC_FOR_BABY);
-            suggestList = database.loadSuggestList(Constants.MUSIC_FOR_BABY);
         }
 
         // after setting adapter, binding to recycler view
@@ -127,115 +118,7 @@ public class MusicForKidsFragment extends Fragment {
             recyclerView.setAdapter(adapter);
         }
 
-        // load suggest list
-        materialSearchBar.setHint("Enter your video");
-        materialSearchBar.setLastSuggestions(suggestList);
-        materialSearchBar.setCardViewElevation(10);
-
-        // add text change listener
-        addTextChangeListener();
-
-        // set search on listener
-        onSearchActionListener();
-
         return rootView;
-    }
-
-    /**
-     * set text change listener for Search bar
-     */
-    private void addTextChangeListener() {
-        materialSearchBar.addTextChangeListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // When user type their text, we will change suggest list
-                List<String> suggest = new ArrayList<String>();
-                for (String search : suggestList) {
-                    if (search.toLowerCase().contains(materialSearchBar.getText().toLowerCase())) {
-                        suggest.add(search);
-                    }
-                }
-                materialSearchBar.setLastSuggestions(suggest);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-    }
-
-    /**
-     * set on search action listener
-     */
-    private void onSearchActionListener() {
-        materialSearchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
-            @Override
-            public void onSearchStateChanged(boolean enabled) {
-                // When Search bar is close
-                // Restore original adapter
-                if (!enabled) {
-                    recyclerView.setAdapter(adapter);
-                }
-            }
-
-            @Override
-            public void onSearchConfirmed(CharSequence text) {
-                // When Search finished
-                // Show result of search adapter
-                startSearch(text);
-            }
-
-            @Override
-            public void onButtonClicked(int buttonCode) {
-
-            }
-        });
-    }
-
-    /**
-     * Searching videoList by text
-     * @param text
-     */
-    private void startSearch(CharSequence text) {
-        searchAdapter = new FirebaseRecyclerAdapter<Video, VideoViewHolder>(
-                Video.class,
-                R.layout.category_card,
-                VideoViewHolder.class,
-                videoList.orderByChild("title").equalTo(text.toString())) { // Compare video title
-            @Override
-            protected void populateViewHolder(VideoViewHolder viewHolder, final Video model, int position) {
-                // set title video
-                viewHolder.txtTitle.setText(model.getTitle());
-                // set video image
-                Picasso.with(getContext()).load(model.getImage())
-                        .into(viewHolder.imgVideo);
-                viewHolder.btnView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Toast.makeText(getContext(), "" + model.getTitle(), Toast.LENGTH_SHORT).show();
-                        sendingData(getContext(), model);
-                    }
-                });
-            }
-        };
-        recyclerView.setAdapter(searchAdapter);
-    }
-
-    /**
-     * Sending data to PlayVideo activity
-     */
-    private void sendingData(Context context, Video video) {
-        if (context != null) {
-            Intent playVideo = new Intent(context, PlayVideoActivity.class);
-            playVideo.putExtra("videoId", video.getVideoId());
-            context.startActivity(playVideo);
-        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event

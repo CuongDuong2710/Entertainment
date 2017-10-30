@@ -94,31 +94,6 @@ public class DatabaseEntertainment {
     }
 
     /**
-     * Loading suggest list when searching by category
-     */
-    public List<String> loadSuggestList(String category) {
-        if (video != null) {
-            video.orderByChild("categoryId").equalTo(category)
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        // get videoList item
-                        for(DataSnapshot itemSpapshot : dataSnapshot.getChildren()) {
-                            Video video = itemSpapshot.getValue(Video.class);
-                            suggestList.add(video.getTitle());
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-        }
-        return suggestList;
-    }
-
-    /**
      * Sending data to PlayVideo activity
      */
     private void sendingData(Context context, Video video) {
