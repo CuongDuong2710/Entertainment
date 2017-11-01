@@ -147,6 +147,14 @@ public class GeneralFragment extends Fragment {
                         .into(viewHolder.imgVideo);
                 // get current video
                 final Video currentVideo = model;
+                // set onClickListener imageView
+                viewHolder.imgVideo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getContext(), "" + currentVideo.getTitle(), Toast.LENGTH_SHORT).show();
+                        sendingData(getContext(), currentVideo);
+                    }
+                });
                 // set onClickListener
                 viewHolder.btnView.setOnClickListener(new View.OnClickListener() {
                     @Override
