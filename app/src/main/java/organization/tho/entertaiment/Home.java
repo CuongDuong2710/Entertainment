@@ -1,5 +1,6 @@
 package organization.tho.entertaiment;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,7 +22,6 @@ import layout.GeneralFragment;
 import layout.KidsFragment;
 import layout.KidsSongFragment;
 import layout.MusicForKidsFragment;
-import layout.RateUsFragment;
 import layout.SportFragment;
 
 public class Home extends AppCompatActivity
@@ -31,8 +31,7 @@ public class Home extends AppCompatActivity
                 MusicForKidsFragment.OnFragmentInteractionListener,
                 AnimalsFragment.OnFragmentInteractionListener,
                 KidsFragment.OnFragmentInteractionListener,
-                KidsSongFragment.OnFragmentInteractionListener,
-                RateUsFragment.OnFragmentInteractionListener{
+                KidsSongFragment.OnFragmentInteractionListener{
 
     FragmentManager fragmentManager = null;
     Toolbar toolbar = null;
@@ -125,8 +124,7 @@ public class Home extends AppCompatActivity
                 toolbar.setTitle("Kids Songs");
                 break;
             case R.id.nav_rate_us:
-                fragment = RateUsFragment.newInstance("test1", "test2");
-                toolbar.setTitle("Rate Us");
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=organization.tho.entertaiment")));
                 break;
             default:
                 fragment = GeneralFragment.newInstance("test1", "test2");
