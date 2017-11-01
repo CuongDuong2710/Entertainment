@@ -19,9 +19,9 @@
             android:icon="@drawable/ic_pool_black_24dp"
             android:title="Funny Sports" />
         <item
-            android:id="@+id/nav_music_for_baby"
-            android:icon="@drawable/ic_headset_black_24dp"
-            android:title="Music For Baby" />
+            android:id="@+id/nav_cartoons"
+            android:icon="@drawable/ic_child_care_black_24dp"
+            android:title="Cartoons" />
         <item
             android:id="@+id/nav_kids_songs"
             android:icon="@drawable/ic_library_music_black_24dp"

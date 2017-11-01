@@ -21,14 +21,14 @@ import layout.AnimalsFragment;
 import layout.GeneralFragment;
 import layout.KidsFragment;
 import layout.KidsSongFragment;
-import layout.MusicForKidsFragment;
+import layout.CartoonsFragment;
 import layout.SportFragment;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
                 SportFragment.OnFragmentInteractionListener,
                 GeneralFragment.OnFragmentInteractionListener,
-                MusicForKidsFragment.OnFragmentInteractionListener,
+                CartoonsFragment.OnFragmentInteractionListener,
                 AnimalsFragment.OnFragmentInteractionListener,
                 KidsFragment.OnFragmentInteractionListener,
                 KidsSongFragment.OnFragmentInteractionListener{
@@ -115,9 +115,9 @@ public class Home extends AppCompatActivity
                 fragment = SportFragment.newInstance("test1", "test2");
                 toolbar.setTitle("Funny Sport");
                 break;
-            case R.id.nav_music_for_baby:
-                fragment = MusicForKidsFragment.newInstance("test1", "test2");
-                toolbar.setTitle("Music For Baby");
+            case R.id.nav_cartoons:
+                fragment = CartoonsFragment.newInstance("test1", "test2");
+                toolbar.setTitle("Cartoons");
                 break;
             case R.id.nav_kids_songs:
                 fragment = KidsSongFragment.newInstance("test1", "test2");

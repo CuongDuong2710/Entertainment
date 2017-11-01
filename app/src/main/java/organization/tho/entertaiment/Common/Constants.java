@@ -15,7 +15,7 @@ public class Constants {
     // Sports
     public static final String SPORTS = "17";
     // Music For Baby - Music
-    public static final String MUSIC_FOR_BABY = "10";
+    public static final String CARTOONS = "1";
     // Kid songs - Education
     public static final String KID_SONGS = "27";
 }
