@@ -8,8 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,15 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
-import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import organization.tho.entertaiment.Common.ConvertDpToPx;
 import organization.tho.entertaiment.Common.DatabaseEntertainment;
@@ -163,6 +154,11 @@ public class GeneralFragment extends Fragment {
                         sendingData(getContext(), currentVideo);
                     }
                 });
+            }
+
+            @Override
+            public Video getItem(int position) {
+                return super.getItem(getItemCount() - 1 - position);
             }
         };
         recyclerView.setAdapter(adapter);
