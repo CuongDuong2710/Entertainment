@@ -20,7 +20,8 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-        <activity android:name=".PlayVideoActivity" />
+        <activity android:name=".PlayVideoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>

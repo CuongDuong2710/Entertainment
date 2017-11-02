@@ -1,10 +1,12 @@
 package organization.tho.entertaiment;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -72,7 +74,20 @@ public class PlayVideoActivity extends AppCompatActivity
     }
 
     @Override
-    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            mAdView1.setVisibility(View.VISIBLE);
+            mAdView2.setVisibility(View.VISIBLE);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mAdView1.setVisibility(View.GONE);
+            mAdView2.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void onInitializationSuccess(YouTubePlayer.Provider provider, final YouTubePlayer youTubePlayer, boolean wasRestored) {
         // add listener to YouTubePlayer instance
         youTubePlayer.setPlayerStateChangeListener(playerStateChangeListener);
         youTubePlayer.setPlaybackEventListener(playbackEventListener);
@@ -81,6 +96,17 @@ public class PlayVideoActivity extends AppCompatActivity
         if (!wasRestored && videoId != null) {
             youTubePlayer.loadVideo(videoId, 0);
         }
+
+        youTubePlayer.setOnFullscreenListener(new YouTubePlayer.OnFullscreenListener() {
+            @Override
+            public void onFullscreen(boolean fullscreen) {
+                if (fullscreen) {
+                    youTubePlayer.play();
+                } else {
+                    youTubePlayer.play();
+                }
+            }
+        });
     }
 
     @Override
