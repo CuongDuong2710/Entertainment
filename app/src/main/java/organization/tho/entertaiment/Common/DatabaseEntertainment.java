@@ -98,6 +98,11 @@ public class DatabaseEntertainment {
                     }
                 });
             }
+
+            @Override
+            public Video getItem(int position) {
+                return super.getItem(getItemCount() - 1 - position);
+            }
         };
         return adapter;
     }
