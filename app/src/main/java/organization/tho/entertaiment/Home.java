@@ -64,9 +64,11 @@ public class Home extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         // init ads
+        // TODO: replace app unit id
         MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
 
         // loading ads
+        // TODO: remove addTestDevice when publish app
         mAdView = (AdView) findViewById(R.id.adView_home);
         AdRequest adRequest = new AdRequest.Builder()
                         .addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
