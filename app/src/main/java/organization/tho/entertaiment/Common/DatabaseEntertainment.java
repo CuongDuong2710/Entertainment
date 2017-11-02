@@ -49,7 +49,7 @@ public class DatabaseEntertainment {
 
                 } else {
                     if (context != null) {
-                        Toast.makeText(context, "Kết nối Wifi để xem video!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Connect Wifi to watch videos!", Toast.LENGTH_LONG).show();
                     }
                 }
             }
