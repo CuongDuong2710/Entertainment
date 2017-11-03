@@ -134,8 +134,12 @@ public class GeneralFragment extends Fragment {
                 // set video title
                 viewHolder.txtTitle.setText(model.getTitle());
                 // set image
-                Picasso.with(getContext()).load(model.getImage())
-                        .into(viewHolder.imgVideo);
+                if (model.getImage().isEmpty()) {
+                    viewHolder.imgVideo.setImageResource(R.drawable.ic_image_black_24dp);
+                } else {
+                    Picasso.with(getContext()).load(model.getImage())
+                            .into(viewHolder.imgVideo);
+                }
                 // get current video
                 final Video currentVideo = model;
                 // set onClickListener imageView
