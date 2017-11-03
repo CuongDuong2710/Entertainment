@@ -19,6 +19,12 @@
       "name" : "KidSongs"
     }
   },
+  "playlist" : {
+    "-KxrzS2rDGwbgmSEESBu" : {
+      "playlist" : "PLdhrcCVXurgL1h66xucJkXXZYS6GVAByj",
+      "publishedAt" : 1509526820000
+    }
+  },
   "video" : {
     "-KxXGMHXOmBMLNwCa8gf" : {
       "categoryId" : "23",
@@ -515,6 +521,86 @@
       "publishedAt" : "2017-10-23T10:38:46.000Z",
       "title" : "Five Little Ducklings | Colors Songs For Children | Kindergarten Nursery Rhymes For Kids by Farmees",
       "videoId" : "-_AYOk9Z7Dw"
+    },
+    "-KxrzS2zjeO2c0iUH3ov" : {
+      "categoryId" : "1",
+      "image" : "https://i.ytimg.com/vi/ldwvBDNn3OQ/hqdefault.jpg",
+      "isGeneral" : true,
+      "publishedAt" : "2017-11-01T09:00:20.000Z",
+      "title" : "Pokémon Tập 10 - Trận đấu khốc liệt, Pupuriru đối thủ đáng gờm - Hoạt Hình Pokémon Black And White",
+      "videoId" : "ldwvBDNn3OQ"
+    },
+    "-KxrzS36-HJWZFX9jLmm" : {
+      "categoryId" : "1",
+      "image" : "https://i.ytimg.com/vi/uAugtPFbRsQ/hqdefault.jpg",
+      "isGeneral" : true,
+      "publishedAt" : "2017-11-01T04:00:14.000Z",
+      "title" : "Pokémon Tập 9 - Rết Khổng Lồ Pendra, Kibago Gặp Nạn - Hoạt Hình Pokémon Black And White",
+      "videoId" : "uAugtPFbRsQ"
+    },
+    "-KxrzS39Eq-zSXYrEBZA" : {
+      "categoryId" : "1",
+      "image" : "https://i.ytimg.com/vi/tGOFG7tPnqI/hqdefault.jpg",
+      "isGeneral" : true,
+      "publishedAt" : "2017-10-31T09:00:25.000Z",
+      "title" : "Pokémon Tập 8 - Darumakka & Hihidaruma, Bí Mật Của Tháp Đồng Hồ - Hoạt Hình Pokémon Black And White",
+      "videoId" : "tGOFG7tPnqI"
+    },
+    "-KxrzS3C8OlWn2Ojx1gu" : {
+      "categoryId" : "1",
+      "image" : "https://i.ytimg.com/vi/Ch-VyoRlC4s/hqdefault.jpg",
+      "isGeneral" : true,
+      "publishedAt" : "2017-10-31T04:00:16.000Z",
+      "title" : "Pokémon Tập 7 - Tsutarja Thu Phục Bằng Cách Dụ Dỗ Sao - Hoạt Hình Pokémon Black And White",
+      "videoId" : "Ch-VyoRlC4s"
+    },
+    "-KxrzS3EcWujRC9OuonG" : {
+      "categoryId" : "1",
+      "image" : "https://i.ytimg.com/vi/m0r14y0vBcs/hqdefault.jpg",
+      "isGeneral" : true,
+      "publishedAt" : "2017-10-27T11:12:42.000Z",
+      "title" : "Pokémon Tập 6 - Khu Tàng Tích Giấc Mơ Munna và Mushana - Hoạt Hình Pokémon Black And White",
+      "videoId" : "m0r14y0vBcs"
+    },
+    "-KxrzS3GacIB3weiQ5bj" : {
+      "categoryId" : "1",
+      "image" : "https://i.ytimg.com/vi/dw7PWOGcsIk/hqdefault.jpg",
+      "isGeneral" : true,
+      "publishedAt" : "2017-10-27T11:12:42.000Z",
+      "title" : "Pokémon Tập 5 - Phòng Tập Sanyo Thi Đấu Baoppu, Hiyapuu và Yanapuu Hoạt Hình Pokémon Black And White",
+      "videoId" : "dw7PWOGcsIk"
+    },
+    "-KxrzS3HSMKYXqgKqjSy" : {
+      "categoryId" : "1",
+      "image" : "https://i.ytimg.com/vi/a3FS7r2egeQ/hqdefault.jpg",
+      "isGeneral" : true,
+      "publishedAt" : "2017-10-27T11:12:42.000Z",
+      "title" : "Pokémon Tập 4 - Câu Lạc Bộ Thi Đấu Pokémon Kì Lạ Pokabu - Hoạt Hình Pokémon Black And White",
+      "videoId" : "a3FS7r2egeQ"
+    },
+    "-KxrzS3JFu8Uzgwx6Ii8" : {
+      "categoryId" : "1",
+      "image" : "https://i.ytimg.com/vi/jrF9aH-zGqI/hqdefault.jpg",
+      "isGeneral" : true,
+      "publishedAt" : "2017-10-27T11:12:42.000Z",
+      "title" : "Pokémon Tập 3 - Mijyumaru Merugoko - Thoát Trong Gang Tấc - Hoạt Hình Pokémon Black And White",
+      "videoId" : "jrF9aH-zGqI"
+    },
+    "-KxrzS3KEjuIDrE3m2Gh" : {
+      "categoryId" : "1",
+      "image" : "https://i.ytimg.com/vi/HGNtTtjuRXk/hqdefault.jpg",
+      "isGeneral" : true,
+      "publishedAt" : "2017-10-27T11:12:42.000Z",
+      "title" : "Pokémon Tập 2 - Airisu Và Kibago - Hoạt Hình Pokémon Black and White",
+      "videoId" : "HGNtTtjuRXk"
+    },
+    "-KxrzS3LtImmQ7w2XMCO" : {
+      "categoryId" : "1",
+      "image" : "https://i.ytimg.com/vi/Ey3U_7MD0qo/hqdefault.jpg",
+      "isGeneral" : true,
+      "publishedAt" : "2017-10-27T11:12:42.000Z",
+      "title" : "Pokémon Tập 1 - Đến Vùng Isshu - Cái Bóng Của Zekrom - Hoạt Hình Pokémon Black And White",
+      "videoId" : "Ey3U_7MD0qo"
     }
   }
 }
