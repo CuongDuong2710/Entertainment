@@ -1,4 +1,4 @@
-package layout;
+package organization.tho.entertaiment.layout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,16 +8,14 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
-import com.squareup.picasso.Picasso;
 
+import organization.tho.entertaiment.Common.Constants;
 import organization.tho.entertaiment.Common.ConvertDpToPx;
 import organization.tho.entertaiment.Common.DatabaseEntertainment;
 import organization.tho.entertaiment.GridSpacingItemDecoration;
@@ -29,12 +27,12 @@ import organization.tho.entertaiment.ViewHolder.VideoViewHolder;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link GeneralFragment.OnFragmentInteractionListener} interface
+ * {@link AnimalsFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link GeneralFragment#newInstance} factory method to
+ * Use the {@link AnimalsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GeneralFragment extends Fragment {
+public class AnimalsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -42,13 +40,9 @@ public class GeneralFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private String mParam1;
-
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-
-    // constant video IS_GENERAL is true
-    private static final boolean IS_GENERAL = true;
 
     // declare Recycler view
     RecyclerView recyclerView = null;
@@ -58,7 +52,7 @@ public class GeneralFragment extends Fragment {
 
     FirebaseRecyclerAdapter<Video, VideoViewHolder> adapter = null;
 
-    public GeneralFragment() {
+    public AnimalsFragment() {
         // Required empty public constructor
     }
 
@@ -68,11 +62,11 @@ public class GeneralFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment GeneralFragment.
+     * @return A new instance of fragment AnimalsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static GeneralFragment newInstance(String param1, String param2) {
-        GeneralFragment fragment = new GeneralFragment();
+    public static AnimalsFragment newInstance(String param1, String param2) {
+        AnimalsFragment fragment = new AnimalsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -93,9 +87,9 @@ public class GeneralFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_general, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_animals, container, false);
 
-        recyclerView = rootView.findViewById(R.id.recycler_view_general);
+        recyclerView = rootView.findViewById(R.id.recycler_view_animals);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -105,12 +99,10 @@ public class GeneralFragment extends Fragment {
         // init DatabaseEntertainment
         DatabaseEntertainment database = new DatabaseEntertainment(getContext());
 
-        // load video general & suggest list
+        // set adapter & load suggest list
         if (database != null) {
-            // get video database reference
             videoList = database.getVideo();
-            // load video general
-            loadVideoGeneral();
+            adapter = database.loadVideo(getContext(), Constants.ANIMALS);
         }
 
         // after setting adapter, binding to recycler view
@@ -122,60 +114,12 @@ public class GeneralFragment extends Fragment {
     }
 
     /**
-     * Loading video is general
-     */
-    private void loadVideoGeneral() {
-        adapter = new FirebaseRecyclerAdapter<Video, VideoViewHolder>(Video.class,
-                R.layout.category_card,
-                VideoViewHolder.class,
-                videoList.orderByChild("isGeneral").equalTo(IS_GENERAL)) {
-            @Override
-            protected void populateViewHolder(VideoViewHolder viewHolder, Video model, int position) {
-                // set video title
-                viewHolder.txtTitle.setText(model.getTitle());
-                // set image
-                if (model.getImage().isEmpty()) {
-                    viewHolder.imgVideo.setImageResource(R.drawable.ic_image_black_24dp);
-                } else {
-                    Picasso.with(getContext()).load(model.getImage())
-                            .into(viewHolder.imgVideo);
-                }
-                // get current video
-                final Video currentVideo = model;
-                // set onClickListener imageView
-                viewHolder.imgVideo.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Toast.makeText(getContext(), "" + currentVideo.getTitle(), Toast.LENGTH_SHORT).show();
-                        sendingData(getContext(), currentVideo);
-                    }
-                });
-                // set onClickListener
-                viewHolder.btnView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Toast.makeText(getContext(), "" + currentVideo.getTitle(), Toast.LENGTH_SHORT).show();
-                        sendingData(getContext(), currentVideo);
-                    }
-                });
-            }
-
-            @Override
-            public Video getItem(int position) {
-                return super.getItem(getItemCount() - 1 - position);
-            }
-        };
-        recyclerView.setAdapter(adapter);
-    }
-
-    /**
      * Sending data to PlayVideo activity
      */
     private void sendingData(Context context, Video video) {
         if (context != null) {
             Intent playVideo = new Intent(context, PlayVideoActivity.class);
             playVideo.putExtra("videoId", video.getVideoId());
-            playVideo.putExtra("videoTitle", video.getTitle());
             context.startActivity(playVideo);
         }
     }

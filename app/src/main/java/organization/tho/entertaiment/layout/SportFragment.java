@@ -1,4 +1,4 @@
-package layout;
+package organization.tho.entertaiment.layout;
 
 import android.content.Context;
 import android.net.Uri;
@@ -25,12 +25,12 @@ import organization.tho.entertaiment.ViewHolder.VideoViewHolder;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CartoonsFragment.OnFragmentInteractionListener} interface
+ * {@link SportFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link CartoonsFragment#newInstance} factory method to
+ * Use the {@link SportFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CartoonsFragment extends Fragment {
+public class SportFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -50,7 +50,7 @@ public class CartoonsFragment extends Fragment {
 
     FirebaseRecyclerAdapter<Video, VideoViewHolder> adapter = null;
 
-    public CartoonsFragment() {
+    public SportFragment() {
         // Required empty public constructor
     }
 
@@ -60,11 +60,11 @@ public class CartoonsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CartoonsFragment.
+     * @return A new instance of fragment SportFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CartoonsFragment newInstance(String param1, String param2) {
-        CartoonsFragment fragment = new CartoonsFragment();
+    public static SportFragment newInstance(String param1, String param2) {
+        SportFragment fragment = new SportFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -85,9 +85,9 @@ public class CartoonsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_music_for_kids, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_sport, container, false);
 
-        recyclerView = rootView.findViewById(R.id.recycler_view_music_for_kids);
+        recyclerView = rootView.findViewById(R.id.recycler_view_sport);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -100,7 +100,7 @@ public class CartoonsFragment extends Fragment {
         // set adapter & load suggest list
         if (database != null) {
             videoList = database.getVideo();
-            adapter = database.loadVideo(getContext(), Constants.CARTOONS);
+            adapter = database.loadVideo(getContext(), Constants.SPORTS);
         }
 
         // after setting adapter, binding to recycler view

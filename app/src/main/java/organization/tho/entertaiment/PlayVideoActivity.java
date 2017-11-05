@@ -46,12 +46,11 @@ public class PlayVideoActivity extends AppCompatActivity
 
         // init ads
         // TODO: replace app unit id
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(this, "ca-app-pub-4439595704793521~4858151305");
 
         // loading ads
         // TODO: remove addTestDevice when publish app
-        AdRequest adRequest = new AdRequest.Builder()
-                        .addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        AdRequest adRequest = new AdRequest.Builder().build();
         mAdView1.loadAd(adRequest);
         mAdView2.loadAd(adRequest);
 

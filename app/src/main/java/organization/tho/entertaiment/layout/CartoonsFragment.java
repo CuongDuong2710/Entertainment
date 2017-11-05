@@ -1,46 +1,36 @@
-package layout;
+package organization.tho.entertaiment.layout;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
-import com.mancj.materialsearchbar.MaterialSearchBar;
-import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import organization.tho.entertaiment.Common.Constants;
 import organization.tho.entertaiment.Common.ConvertDpToPx;
 import organization.tho.entertaiment.Common.DatabaseEntertainment;
 import organization.tho.entertaiment.GridSpacingItemDecoration;
 import organization.tho.entertaiment.Model.Video;
-import organization.tho.entertaiment.PlayVideoActivity;
 import organization.tho.entertaiment.R;
 import organization.tho.entertaiment.ViewHolder.VideoViewHolder;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link AnimalsFragment.OnFragmentInteractionListener} interface
+ * {@link CartoonsFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link AnimalsFragment#newInstance} factory method to
+ * Use the {@link CartoonsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AnimalsFragment extends Fragment {
+public class CartoonsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -60,7 +50,7 @@ public class AnimalsFragment extends Fragment {
 
     FirebaseRecyclerAdapter<Video, VideoViewHolder> adapter = null;
 
-    public AnimalsFragment() {
+    public CartoonsFragment() {
         // Required empty public constructor
     }
 
@@ -70,11 +60,11 @@ public class AnimalsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AnimalsFragment.
+     * @return A new instance of fragment CartoonsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AnimalsFragment newInstance(String param1, String param2) {
-        AnimalsFragment fragment = new AnimalsFragment();
+    public static CartoonsFragment newInstance(String param1, String param2) {
+        CartoonsFragment fragment = new CartoonsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -95,9 +85,9 @@ public class AnimalsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_animals, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_music_for_kids, container, false);
 
-        recyclerView = rootView.findViewById(R.id.recycler_view_animals);
+        recyclerView = rootView.findViewById(R.id.recycler_view_music_for_kids);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -110,7 +100,7 @@ public class AnimalsFragment extends Fragment {
         // set adapter & load suggest list
         if (database != null) {
             videoList = database.getVideo();
-            adapter = database.loadVideo(getContext(), Constants.ANIMALS);
+            adapter = database.loadVideo(getContext(), Constants.CARTOONS);
         }
 
         // after setting adapter, binding to recycler view
@@ -119,17 +109,6 @@ public class AnimalsFragment extends Fragment {
         }
 
         return rootView;
-    }
-
-    /**
-     * Sending data to PlayVideo activity
-     */
-    private void sendingData(Context context, Video video) {
-        if (context != null) {
-            Intent playVideo = new Intent(context, PlayVideoActivity.class);
-            playVideo.putExtra("videoId", video.getVideoId());
-            context.startActivity(playVideo);
-        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -17,12 +17,12 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
-import layout.AnimalsFragment;
-import layout.GeneralFragment;
-import layout.KidsFragment;
-import layout.KidsSongFragment;
-import layout.CartoonsFragment;
-import layout.SportFragment;
+import organization.tho.entertaiment.layout.AnimalsFragment;
+import organization.tho.entertaiment.layout.GeneralFragment;
+import organization.tho.entertaiment.layout.KidsFragment;
+import organization.tho.entertaiment.layout.KidsSongFragment;
+import organization.tho.entertaiment.layout.CartoonsFragment;
+import organization.tho.entertaiment.layout.SportFragment;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -65,13 +65,12 @@ public class Home extends AppCompatActivity
 
         // init ads
         // TODO: replace app unit id
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(this, "ca-app-pub-4439595704793521~4858151305");
 
         // loading ads
         // TODO: remove addTestDevice when publish app
         mAdView = (AdView) findViewById(R.id.adView_home);
-        AdRequest adRequest = new AdRequest.Builder()
-                        .addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
     }
 
