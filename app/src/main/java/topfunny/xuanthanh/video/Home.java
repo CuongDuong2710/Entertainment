@@ -125,7 +125,8 @@ public class Home extends AppCompatActivity
                 toolbar.setTitle("Kids Songs");
                 break;
             case R.id.nav_rate_us:
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=organization.tho.entertaiment")));
+                String packageName = getPackageName();
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
                 break;
             default:
                 fragment = GeneralFragment.newInstance("test1", "test2");
