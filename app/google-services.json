@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:501517300391:android:24ffc6f3e3ca9066",
         "android_client_info": {
-          "package_name": "topfunny.xuanthanh.video"
+          "package_name": "comic.thanh.funny"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "501517300391-jb4pnd1j6j1d4kemi92cic471ln6pm21.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "topfunny.xuanthanh.video",
+            "package_name": "comic.thanh.funny",
             "certificate_hash": "9f3f15c94aec86ce0fe6a25c37c4fd55c22b7101"
           }
         },

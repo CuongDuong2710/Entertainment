@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="topfunny.xuanthanh.video">
+    package="comic.thanh.funny">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="topfunny.xuanthanh.video.Application.Entertainment"
+        android:name="comic.thanh.funny.Application.Entertainment"
         android:allowBackup="true"
         android:icon="@mipmap/ic_funny_round"
         android:label="@string/app_name"
@@ -15,14 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="topfunny.xuanthanh.video.Home"
+            android:name="comic.thanh.funny.Home"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-        <activity android:name="topfunny.xuanthanh.video.PlayVideoActivity"
+        <activity android:name="comic.thanh.funny.PlayVideoActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity android:name="topfunny.xuanthanh.video.SplashActivity"
+        <activity android:name="comic.thanh.funny.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
