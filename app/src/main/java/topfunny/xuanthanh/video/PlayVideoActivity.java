@@ -20,8 +20,6 @@ import butterknife.ButterKnife;
 
 public class PlayVideoActivity extends AppCompatActivity
         implements YouTubePlayer.OnInitializedListener {
-    @BindView(R.id.adView1) AdView mAdView1;
-    @BindView(R.id.adView2) AdView mAdView2;
     @BindView(R.id.toolbar) Toolbar mToolbar;
 
     public static final String API_KEY = "AIzaSyDBRvaEaDuSmQHEcQZrHVOOza_qJQic7NI";
@@ -45,12 +43,6 @@ public class PlayVideoActivity extends AppCompatActivity
         // TODO: replace app unit id
         MobileAds.initialize(this, "ca-app-pub-4439595704793521~4858151305");
 
-        // loading ads
-        // TODO: remove addTestDevice when publish app
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView1.loadAd(adRequest);
-        mAdView2.loadAd(adRequest);
-
         // Action bar
         setSupportActionBar(mToolbar);
 
@@ -67,19 +59,6 @@ public class PlayVideoActivity extends AppCompatActivity
             finish();
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            mAdView1.setVisibility(View.VISIBLE);
-            mAdView2.setVisibility(View.VISIBLE);
-        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            mAdView1.setVisibility(View.GONE);
-            mAdView2.setVisibility(View.GONE);
-        }
     }
 
     @Override

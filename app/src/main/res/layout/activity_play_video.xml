@@ -18,59 +18,25 @@
 
     </android.support.v7.widget.Toolbar>
 
-
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar">
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@id/toolbar"
+        android:background="@drawable/layout_background">
 
-        <!-- TODO: replace adUnitId -->
-        <com.google.android.gms.ads.AdView
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/adView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-4439595704793521/7926812554">
-        </com.google.android.gms.ads.AdView>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/adView1"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginBottom="15dp"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/layout_background">
-
-            <fragment
-                android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
-                android:id="@+id/youtube_player"
-                android:layout_width="match_parent"
-                android:layout_height="380dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp">
-            </fragment>
-
-        </RelativeLayout>
-
-        <!-- TODO: replace adUnitId -->
-        <com.google.android.gms.ads.AdView
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/adView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-4439595704793521/7926812554">
-        </com.google.android.gms.ads.AdView>
+        <fragment
+            android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
+            android:id="@+id/youtube_player"
+            android:layout_width="match_parent"
+            android:layout_height="430dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp">
+        </fragment>
 
     </RelativeLayout>
 

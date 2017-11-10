@@ -16,28 +16,6 @@
         app:titleTextColor="@android:color/white">
 
     </android.support.v7.widget.Toolbar>
-    <!-- TODO: replace adUnitId -->
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-4439595704793521/7926812554">
-    </com.google.android.gms.ads.AdView>
-
-    <!-- TODO: replace adUnitId -->
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-4439595704793521/7926812554">
-    </com.google.android.gms.ads.AdView>
 
     <fragment
         android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
