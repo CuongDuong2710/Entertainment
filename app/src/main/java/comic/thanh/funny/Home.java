@@ -65,7 +65,7 @@ public class Home extends AppCompatActivity
 
         // init ads
         // TODO: replace app unit id
-        MobileAds.initialize(this, "ca-app-pub-4439595704793521~4858151305");
+        MobileAds.initialize(this, "ca-app-pub-5590642543350961~5602806669");
 
         // loading ads
         // TODO: remove addTestDevice when publish app
